@@ -1,0 +1,814 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "00eb197d-72f4-4443-a521-65079c354816",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Mandiant Advantage Threat Intelligence - 1.0.0",
+      "description": "Mandiant Advantage Threat Intelligence provides automated access to indicators of compromise (IOCs) IP addresses, domain names, URLs threat actors are using, via the indicators, allows access to full length finished intelligence in the reports, allows for notificaiton of threats to brand and keyword monitoring via the alerts, and finally allows searching for intelligence on the adversary with the search. This connector facilitates automated operations such as indicators, actors, malware, reports, campaigns, and vulnerabilities.",
+      "visible": true,
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "d663e873-28d4-4daf-a4f9-dcc11836a473",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "0fb57c65-8187-4f42-bb82-2c169fc6d141",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "fadf2c00-b4ef-4999-9390-3b030a43dce5",
+              "@type": "WorkflowStep",
+              "name": "Get Indicators List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "start_epoch": "",
+                  "end_epoch": "",
+                  "limit": 25,
+                  "gte_mscore": "",
+                  "exclude_osint": "",
+                  "include_reports": "",
+                  "report_limit": 25,
+                  "include_campaigns": "",
+                  "next": "",
+                  "sort_by": "",
+                  "sort_order": "Ascending"
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_indicators",
+                "operationTitle": "Get Indicators List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves all indicators from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+          "name": "Get Indicators List",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/0fb57c65-8187-4f42-bb82-2c169fc6d141",
+          "routes": [
+            {
+              "uuid": "fc27eddd-665b-4413-8c65-aa3db522f718",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Indicators List",
+              "sourceStep": "/api/3/workflow_steps/0fb57c65-8187-4f42-bb82-2c169fc6d141",
+              "targetStep": "/api/3/workflow_steps/fadf2c00-b4ef-4999-9390-3b030a43dce5"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "aca779be-37a2-4770-a881-d27367fcca79",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "e1ec89fe-b630-4b7e-83c1-d785969a3657",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "c315f8bf-6e7f-46df-bafb-c92609c25a3c",
+              "@type": "WorkflowStep",
+              "name": "Get Indicator Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "value": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_indicator_details",
+                "operationTitle": "Get Indicator Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a specific indicator details from Mandiant Advantage Threat Intelligence based on the indicator value you have specified.",
+          "name": "Get Indicator Details",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e1ec89fe-b630-4b7e-83c1-d785969a3657",
+          "routes": [
+            {
+              "uuid": "d54b256f-de73-4dd8-b995-2626f15574f4",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Indicator Details",
+              "sourceStep": "/api/3/workflow_steps/e1ec89fe-b630-4b7e-83c1-d785969a3657",
+              "targetStep": "/api/3/workflow_steps/c315f8bf-6e7f-46df-bafb-c92609c25a3c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "f7b2cb3e-f00f-447a-913c-b688e4112b35",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "1d08e0a1-8744-4410-b79a-17e6a49b799a",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "1b8260d1-3868-4778-95bf-d5c73617170c",
+              "@type": "WorkflowStep",
+              "name": "Get Threat Actors List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "limit": 25,
+                  "offset": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_actors",
+                "operationTitle": "Get Threat Actors List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves all actors from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+          "name": "Get Threat Actors List",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/1d08e0a1-8744-4410-b79a-17e6a49b799a",
+          "routes": [
+            {
+              "uuid": "58e3d9e6-92ea-4d5f-ac6c-a273bec8189e",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Threat Actors List",
+              "sourceStep": "/api/3/workflow_steps/1d08e0a1-8744-4410-b79a-17e6a49b799a",
+              "targetStep": "/api/3/workflow_steps/1b8260d1-3868-4778-95bf-d5c73617170c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "f19f0da4-f961-435c-a9f4-a2343093fc2f",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "f1775a8d-3888-4574-b716-39c91046e48b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "e97a6fb8-e2da-4fc2-9697-18c196aad200",
+              "@type": "WorkflowStep",
+              "name": "Get Threat Actor Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "id": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_actor_details",
+                "operationTitle": "Get Threat Actor Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a specific actor details from Mandiant Advantage Threat Intelligence based on the actor ID or name you have specified.",
+          "name": "Get Threat Actor Details",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/f1775a8d-3888-4574-b716-39c91046e48b",
+          "routes": [
+            {
+              "uuid": "ee13b65f-41c7-459b-9a37-473c239223cb",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Threat Actor Details",
+              "sourceStep": "/api/3/workflow_steps/f1775a8d-3888-4574-b716-39c91046e48b",
+              "targetStep": "/api/3/workflow_steps/e97a6fb8-e2da-4fc2-9697-18c196aad200"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "12f7fa6d-9343-41cd-a35a-3f1b46136a6d",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "fabba766-4eaf-416b-b5b3-a4650283a03b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "17d826ab-72f0-4407-a0ea-648b81dd8182",
+              "@type": "WorkflowStep",
+              "name": "Get Malware Families List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "limit": 5000,
+                  "offset": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_malware",
+                "operationTitle": "Get Malware Families List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves all malware from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+          "name": "Get Malware Families List",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fabba766-4eaf-416b-b5b3-a4650283a03b",
+          "routes": [
+            {
+              "uuid": "7bca3dd8-e1d8-4d31-be75-b64168555082",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Malware Families List",
+              "sourceStep": "/api/3/workflow_steps/fabba766-4eaf-416b-b5b3-a4650283a03b",
+              "targetStep": "/api/3/workflow_steps/17d826ab-72f0-4407-a0ea-648b81dd8182"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "7e21a27a-fbcf-446f-bdd4-9b6a8039077b",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "209ca2b0-e432-4588-9bd7-f675051ead06",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "7d971138-3131-433c-8319-e9ef9def3fc2",
+              "@type": "WorkflowStep",
+              "name": "Get Malware Family Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "id": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_malware_details",
+                "operationTitle": "Get Malware Family Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a specific malware details from Mandiant Advantage Threat Intelligence based on the malware ID or name you have specified.",
+          "name": "Get Malware Family Details",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/209ca2b0-e432-4588-9bd7-f675051ead06",
+          "routes": [
+            {
+              "uuid": "5e1dffd8-8ef6-4d61-893a-c055fa6bbc3c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Malware Family Details",
+              "sourceStep": "/api/3/workflow_steps/209ca2b0-e432-4588-9bd7-f675051ead06",
+              "targetStep": "/api/3/workflow_steps/7d971138-3131-433c-8319-e9ef9def3fc2"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a3fba383-b073-4e14-9184-2de1cec3336b",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "aba8f41b-39b9-47bd-9eaf-3ba1e4a42f60",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "cc834c4e-c97f-4718-8309-6020019d160d",
+              "@type": "WorkflowStep",
+              "name": "Get Campaigns List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "start_date": "",
+                  "end_date": "",
+                  "limit": 1000,
+                  "offset": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_campaign",
+                "operationTitle": "Get Campaigns List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves all campaigns from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+          "name": "Get Campaigns List",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/aba8f41b-39b9-47bd-9eaf-3ba1e4a42f60",
+          "routes": [
+            {
+              "uuid": "a6be78d5-3721-4995-8269-539aad2fec7c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Campaigns List",
+              "sourceStep": "/api/3/workflow_steps/aba8f41b-39b9-47bd-9eaf-3ba1e4a42f60",
+              "targetStep": "/api/3/workflow_steps/cc834c4e-c97f-4718-8309-6020019d160d"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a62664e0-bbdb-4138-86b7-aad8b3d80137",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "223e0b24-f17d-4963-b95a-48b69a7e9235",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "031fb7ab-df31-40a3-857b-d375c6878ce5",
+              "@type": "WorkflowStep",
+              "name": "Get Campaign Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "id": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_campaign_details",
+                "operationTitle": "Get Campaign Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a specific campaign details from Mandiant Advantage Threat Intelligence based on the campaign ID you have specified.",
+          "name": "Get Campaign Details",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/223e0b24-f17d-4963-b95a-48b69a7e9235",
+          "routes": [
+            {
+              "uuid": "a040de4d-7acf-4517-9c7a-156e860dc32d",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Campaign Details",
+              "sourceStep": "/api/3/workflow_steps/223e0b24-f17d-4963-b95a-48b69a7e9235",
+              "targetStep": "/api/3/workflow_steps/031fb7ab-df31-40a3-857b-d375c6878ce5"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "0331f08b-7c78-4285-93b7-a134d063b9fc",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "bc9ce10e-0fd0-45c8-bae7-ae193dd633d6",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "ec661266-a611-4c74-bb41-8e67b028a7af",
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerabilities List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "start_epoch": "",
+                  "end_epoch": "",
+                  "limit": 50,
+                  "next": "",
+                  "sort_by": "",
+                  "sort_order": "",
+                  "rating_types": "",
+                  "risk_ratings": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_vulnerability",
+                "operationTitle": "Get Vulnerabilities List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves all vulnerabilities from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+          "name": "Get Vulnerabilities List",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bc9ce10e-0fd0-45c8-bae7-ae193dd633d6",
+          "routes": [
+            {
+              "uuid": "cc117fbd-2af1-47ad-9863-ec88d41e2b0e",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Vulnerabilities List",
+              "sourceStep": "/api/3/workflow_steps/bc9ce10e-0fd0-45c8-bae7-ae193dd633d6",
+              "targetStep": "/api/3/workflow_steps/ec661266-a611-4c74-bb41-8e67b028a7af"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "4447efd4-4361-446f-90c0-a3669c6519ca",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "a52ae90a-e59e-4f99-a7c5-65b59908dab1",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "485d429f-2e37-4140-bdbb-468b9dfc0752",
+              "@type": "WorkflowStep",
+              "name": "Get Reports List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "start_epoch": "",
+                  "end_epoch": "",
+                  "limit": 25,
+                  "offset": "",
+                  "next": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_reports",
+                "operationTitle": "Get Reports List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves all reports from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+          "name": "Get Reports List",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/a52ae90a-e59e-4f99-a7c5-65b59908dab1",
+          "routes": [
+            {
+              "uuid": "ef75ee96-8c5f-481e-ac6b-48a7774b4330",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Reports List",
+              "sourceStep": "/api/3/workflow_steps/a52ae90a-e59e-4f99-a7c5-65b59908dab1",
+              "targetStep": "/api/3/workflow_steps/485d429f-2e37-4140-bdbb-468b9dfc0752"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "8f9d09bf-c94a-479b-bc4c-53ef67a84753",
+          "collection": "/api/3/workflow_collections/00eb197d-72f4-4443-a521-65079c354816",
+          "steps": [
+            {
+              "uuid": "0f9db669-e01b-4478-a6ef-d3d6f5db14ff",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "8dd3a466-a7a8-4409-843a-4d077c3cfb86",
+              "@type": "WorkflowStep",
+              "name": "Get Report Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Mandiant Advantage Threat Intelligence",
+                "config": "",
+                "params": {
+                  "id": ""
+                },
+                "version": "1.0.0",
+                "connector": "mandiant-advantage-threat-intelligence",
+                "operation": "get_report_details",
+                "operationTitle": "Get Report Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a specific report details from Mandiant Advantage Threat Intelligence based on the report ID you have specified.",
+          "name": "Get Report Details",
+          "tag": "#Mandiant Advantage Threat Intelligence",
+          "recordTags": [
+            "Mandiant",
+            "mandiant-advantage-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/0f9db669-e01b-4478-a6ef-d3d6f5db14ff",
+          "routes": [
+            {
+              "uuid": "a76a2a7c-a4e1-4639-ae41-c80dafc5c13c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Report Details",
+              "sourceStep": "/api/3/workflow_steps/0f9db669-e01b-4478-a6ef-d3d6f5db14ff",
+              "targetStep": "/api/3/workflow_steps/8dd3a466-a7a8-4409-843a-4d077c3cfb86"
+            }
+          ]
+        }
+      ],
+      "recordTags": [
+        "Mandiant",
+        "mandiant-advantage-threat-intelligence"
+      ]
+    }
+  ]
+}
