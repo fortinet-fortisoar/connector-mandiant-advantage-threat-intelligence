@@ -7,7 +7,7 @@
   "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
-  "help_online": "https://github.com/fortinet-fortisoar/connector-mandiant-advantage-threat-intelligence/blob/release/1.0.0/docs/MandiantATIDoc.md",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/mandiant-advantage-threat-intelligence/699/mandiant-advantage-threat-intelligence-v1-0-0",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "ingestion_supported": false,
@@ -20,9 +20,9 @@
         "required": true,
         "editable": true,
         "visible": true,
-        "description": "The service-based URI to which you will connect and perform the automated operations.",
+        "description": "The service-based URI to connect and perform automated operations.",
         "value": "https://api.intelligence.fireeye.com",
-        "tooltip": "The service-based URI to which you will connect and perform the automated operations."
+        "tooltip": "The service-based URI to connect and perform automated operations."
       },
       {
         "title": "Public Key",
@@ -42,18 +42,18 @@
         "visible": true,
         "type": "password",
         "name": "private_key",
-        "description": "The unique Mandiant Advantage Threat Intelligence Private Key used to create an authentication token required to access the Mandiant Advantage Threat Intelligence API."
+        "description": "he unique Mandiant Advantage Threat Intelligence Private Key used to create an authentication token required to access the Mandiant Advantage Threat Intelligence API."
       },
       {
         "title": "Verify SSL",
         "name": "verify_ssl",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True.",
         "type": "checkbox",
         "required": false,
         "editable": true,
         "visible": true,
         "value": true,
-        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True."
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True."
       }
     ]
   },
@@ -62,115 +62,94 @@
       "operation": "get_indicators",
       "category": "investigation",
       "annotation": "get_indicators",
-      "description": "Retrieves all indicators from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+      "description": "Retrieves all indicators from Mandiant Advantage Threat Intelligence based on the date range, confidence score, and other input parameters specified.",
       "title": "Get Indicators List",
       "parameters": [
         {
           "title": "Start DateTime",
           "name": "start_epoch",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp.",
+          "description": "Select the start date and time of the duration to retrieve indicators created after the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp."
+          "tooltip": "Select the start date and time of the duration to retrieve indicators created after the specified timestamp."
         },
         {
           "title": "End DateTime",
           "name": "end_epoch",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp.",
+          "description": "Select the end date and time of the duration to retrieve indicators created before the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp."
-        },
-        {
-          "title": "Limit",
-          "name": "limit",
-          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 25 and maximum allowed 1000.",
-          "type": "integer",
-          "visible": true,
-          "editable": true,
-          "required": false,
-          "value": 25,
-          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 25 and maximum allowed 1000."
+          "tooltip": "Select the end date and time of the duration to retrieve indicators created before the specified timestamp."
         },
         {
           "title": "Confidence Score",
           "name": "gte_mscore",
-          "description": "Specify the minimum indicator confidence score that this operation to return.",
+          "description": "Specify the minimum score to retrieve indicators that have a higher confidence score.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Specify the minimum indicator confidence score that this operation to return"
+          "tooltip": "Specify the minimum score to retrieve indicators that have a higher confidence score."
         },
         {
           "title": "Exclude Open Source Indicator",
           "name": "exclude_osint",
-          "description": "Select this checkbox if open source indicators should be returned.",
+          "description": "Select this checkbox to retrieve open source indicators.",
           "type": "checkbox",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select this checkbox if open source indicators should be returned."
+          "tooltip": "Select this checkbox to retrieve open source indicators."
         },
         {
           "title": "Include Reports",
           "name": "include_reports",
-          "description": "Select this checkbox if you want this operation to include related reports.",
+          "description": "Select this checkbox to include related reports.",
           "type": "checkbox",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select this checkbox if you want this operation to include related reports."
+          "tooltip": "Select this checkbox to include related reports."
         },
         {
           "title": "Report Limit",
           "name": "report_limit",
-          "description": "Specify the maximum number of reports to include in response, that this operation should return. By default, this option is set as 25 and maximum allowed 1000.",
+          "description": "Specify the maximum number of reports to include in a response. By default, this option is set to 25 and maximum allowed is 1000.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
           "value": 25,
-          "tooltip": "Specify the maximum number of reports to include in response, that this operation should return. By default, this option is set as 25 and maximum allowed 1000."
+          "tooltip": "Specify the maximum number of reports to include in a response. By default, this option is set to 25 and maximum allowed is 1000."
         },
         {
           "title": "Include Campaigns",
           "name": "include_campaigns",
-          "description": "Select this checkbox if you want this operation to include related campaigns.",
+          "description": "Select this checkbox to include related campaigns.",
           "type": "checkbox",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select this checkbox if you want this operation to include related campaigns."
-        },
-        {
-          "title": "Skip Token",
-          "name": "next",
-          "description": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes.",
-          "type": "text",
-          "visible": true,
-          "editable": true,
-          "required": false,
-          "tooltip": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes."
+          "tooltip": "Select this checkbox to include related campaigns."
         },
         {
           "title": "Sort By",
           "name": "sort_by",
-          "description": "Specify the name of the field based on which you want to sort the result (indicators) retrieved by this operation. It can also be extended to support sort order by appending a ':' and sort order.",
+          "description": "Specify the name of the field based on which to sort the result retrieved by this operation. It can also be extended to support sorting by appending a : and a sort order (Ascending or Descending).",
           "type": "text",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Specify the name of the field based on which you want to sort the result (indicators) retrieved by this operation. It can also be extended to support sort order by appending a ':' and sort order."
+          "tooltip": "Specify the name of the field based on which to sort the result retrieved by this operation. It can also be extended to support sorting by appending a : and a sort order (Ascending or Descending)."
         },
         {
           "title": "Sort Order",
           "name": "sort_order",
-          "description": "Select the sorting order of the result. You can choose between Ascending (default) or Descending.",
+          "description": "Select the sorting order of the result. You can choose from following options: Ascending (default) or Descending.",
           "type": "select",
           "visible": true,
           "editable": true,
@@ -180,7 +159,28 @@
             "Descending"
           ],
           "value": "Ascending",
-          "tooltip": "Select the sorting order of the result. You can choose between Ascending (default) or Descending."
+          "tooltip": "Select the sorting order of the result. You can choose from following options: Ascending (default) or Descending."
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000.",
+          "type": "integer",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "value": 25,
+          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000."
+        },
+        {
+          "title": "Skip Token",
+          "name": "next",
+          "description": "Skip token is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element includes a skip token parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. NOTE: The token returned is valid for 10 minutes.",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Skip token is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element includes a skip token parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. NOTE: The token returned is valid for 10 minutes."
         }
       ],
       "output_schema": {
@@ -249,18 +249,18 @@
       "operation": "get_indicator_details",
       "category": "investigation",
       "annotation": "get_indicator_details",
-      "description": "Retrieves a specific indicator details from Mandiant Advantage Threat Intelligence based on the indicator value you have specified.",
+      "description": "Retrieves the details of a specific indicator from Mandiant Advantage Threat Intelligence based on the indicator value specified.",
       "title": "Get Indicator Details",
       "parameters": [
         {
           "title": "Indicator Value",
           "name": "value",
-          "description": "Specify the value of the indicator to look up. It can be URL, domain name, IP address, or file hash.",
+          "description": "Specify the value of the indicator to get its details. It can be a URL, domain name, IP address, or a file hash.",
           "type": "text",
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Specify the value of the indicator to look up. It can be URL, domain name, IP address, or file hash."
+          "tooltip": "Specify the value of the indicator to get its details. It can be a URL, domain name, IP address, or a file hash."
         }
       ],
       "output_schema": {
@@ -328,7 +328,7 @@
       "operation": "get_actors",
       "category": "investigation",
       "annotation": "get_actors",
-      "description": "Retrieves all actors from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+      "description": "Retrieves all threat actors from Mandiant Advantage Threat Intelligence based on the pagination parameters specified.",
       "title": "Get Threat Actors List",
       "parameters": [
         {
@@ -378,18 +378,18 @@
       "operation": "get_actor_details",
       "category": "investigation",
       "annotation": "get_actor_details",
-      "description": "Retrieves a specific actor details from Mandiant Advantage Threat Intelligence based on the actor ID or name you have specified.",
+      "description": "Retrieves the details of a specific threat actor from Mandiant Advantage Threat Intelligence based on the threat actor ID or name specified.",
       "title": "Get Threat Actor Details",
       "parameters": [
         {
           "title": "Actor ID/Name",
           "name": "id",
-          "description": "Specify the ID or name of the actor based on which you want to retrieve actor details from Mandiant Advantage Threat Intelligence.",
+          "description": "Specify the ID or name of the threat actor to retrieve its details from Mandiant Advantage Threat Intelligence.",
           "type": "text",
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Specify the ID or name of the actor based on which you want to retrieve actor details from Mandiant Advantage Threat Intelligence."
+          "tooltip": "Specify the ID or name of the threat actor to retrieve its details from Mandiant Advantage Threat Intelligence."
         }
       ],
       "output_schema": {
@@ -535,30 +535,30 @@
       "operation": "get_malware",
       "category": "investigation",
       "annotation": "get_malware",
-      "description": "Retrieves all malware from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+      "description": "Retrieves all malware from Mandiant Advantage Threat Intelligence based on the pagination parameters specified.",
       "title": "Get Malware Families List",
       "parameters": [
         {
           "title": "Limit",
           "name": "limit",
-          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 5000.",
+          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 5000.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
           "value": 5000,
-          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 5000."
+          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 5000."
         },
         {
           "title": "Offset",
           "name": "offset",
-          "description": "Index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set as 0.",
+          "description": "Specify the index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set to 0.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
           "value": 0,
-          "tooltip": "Index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set as 0."
+          "tooltip": "Specify the index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set to 0."
         }
       ],
       "output_schema": {
@@ -585,18 +585,18 @@
       "operation": "get_malware_details",
       "category": "investigation",
       "annotation": "get_malware_details",
-      "description": "Retrieves a specific malware details from Mandiant Advantage Threat Intelligence based on the malware ID or name you have specified.",
+      "description": "Retrieves the details of a specific malware from Mandiant Advantage Threat Intelligence based on the malware ID or name specified.",
       "title": "Get Malware Family Details",
       "parameters": [
         {
           "title": "Malware ID/Name",
           "name": "id",
-          "description": "Specify the ID or name of the malware based on which you want to retrieve malware details from Mandiant Advantage Threat Intelligence.",
+          "description": "Specify the ID or name of the malware to retrieve its details from Mandiant Advantage Threat Intelligence.",
           "type": "text",
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Specify the ID or name of the malware based on which you want to retrieve malware details from Mandiant Advantage Threat Intelligence."
+          "tooltip": "Specify the ID or name of the malware to retrieve its details from Mandiant Advantage Threat Intelligence."
         }
       ],
       "output_schema": {
@@ -679,50 +679,50 @@
       "operation": "get_campaign",
       "category": "investigation",
       "annotation": "get_campaign",
-      "description": "Retrieves all campaigns from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+      "description": "Retrieves all campaigns from Mandiant Advantage Threat Intelligence based on the pagination parameters specified.",
       "title": "Get Campaigns List",
       "parameters": [
         {
           "title": "Start DateTime",
           "name": "start_date",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp.",
+          "description": "Select the start date and time of the duration to retrieve campaigns created after the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp."
+          "tooltip": "Select the start date and time of the duration to retrieve campaigns created after the specified timestamp."
         },
         {
           "title": "End DateTime",
           "name": "end_date",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp.",
+          "description": "Select the end date and time of the duration to retrieve campaigns created before the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp."
+          "tooltip": "Select the end date and time of the duration to retrieve campaigns created before the specified timestamp."
         },
         {
           "title": "Limit",
           "name": "limit",
-          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 1000 and maximum allowed 10000.",
+          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
           "value": 1000,
-          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 1000 and maximum allowed 10000."
+          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000."
         },
         {
           "title": "Offset",
           "name": "offset",
-          "description": "Index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set as 0.",
+          "description": "Specify the index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set to 0.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
           "value": 0,
-          "tooltip": "Index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set as 0."
+          "tooltip": "Specify the index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set to 0."
         }
       ],
       "output_schema": {
@@ -741,18 +741,18 @@
       "operation": "get_campaign_details",
       "category": "investigation",
       "annotation": "get_campaign_details",
-      "description": "Retrieves a specific campaign details from Mandiant Advantage Threat Intelligence based on the campaign ID you have specified.",
+      "description": "Retrieves the details of a specific campaign from Mandiant Advantage Threat Intelligence based on the campaign ID specified.",
       "title": "Get Campaign Details",
       "parameters": [
         {
           "title": "Campaign ID",
           "name": "id",
-          "description": "Specify the ID of the campaign based on which you want to retrieve campaign details from Mandiant Advantage Threat Intelligence.",
+          "description": "Specify the ID of the campaign to retrieve its details from Mandiant Advantage Threat Intelligence.",
           "type": "text",
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Specify the ID of the campaign based on which you want to retrieve campaign details from Mandiant Advantage Threat Intelligence."
+          "tooltip": "Specify the ID of the campaign to retrieve its details from Mandiant Advantage Threat Intelligence."
         }
       ],
       "output_schema": {
@@ -843,78 +843,33 @@
       "operation": "get_vulnerability",
       "category": "investigation",
       "annotation": "get_vulnerability",
-      "description": "Retrieves all vulnerabilities from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+      "description": "Retrieves all vulnerabilities from Mandiant Advantage Threat Intelligence based on the pagination parameters specified.",
       "title": "Get Vulnerabilities List",
       "parameters": [
         {
           "title": "Start DateTime",
           "name": "start_epoch",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp.",
+          "description": "Select the start date and time of the duration to retrieve vulnerabilities created after the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp."
+          "tooltip": "Select the start date and time of the duration to retrieve vulnerabilities created after the specified timestamp."
         },
         {
           "title": "End DateTime",
           "name": "end_epoch",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp.",
+          "description": "Select the end date and time of the duration to retrieve vulnerabilities created before the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp."
-        },
-        {
-          "title": "Limit",
-          "name": "limit",
-          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 50 and maximum allowed 1000.",
-          "type": "integer",
-          "visible": true,
-          "editable": true,
-          "required": false,
-          "value": 50,
-          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 50 and maximum allowed 1000."
-        },
-        {
-          "title": "Skip Token",
-          "name": "next",
-          "description": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes.",
-          "type": "text",
-          "visible": true,
-          "editable": true,
-          "required": false,
-          "tooltip": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes."
-        },
-        {
-          "title": "Sort By",
-          "name": "sort_by",
-          "description": "Specify the name of the field based on which you want to sort the result (vulnerabilities) retrieved by this operation. It can also be extended to support sort order by appending a ':' and sort order.",
-          "type": "text",
-          "visible": true,
-          "editable": true,
-          "required": false,
-          "tooltip": "Specify the name of the field based on which you want to sort the result (vulnerabilities) retrieved by this operation. It can also be extended to support sort order by appending a ':' and sort order."
-        },
-        {
-          "title": "Sort Order",
-          "name": "sort_order",
-          "description": "Select the sorting order of the result. You can choose between Ascending (default) or Descending.",
-          "type": "select",
-          "visible": true,
-          "editable": true,
-          "required": false,
-          "options": [
-            "Ascending",
-            "Descending"
-          ],
-          "tooltip": "Select the sorting order of the result. You can choose between Ascending (default) or Descending."
+          "tooltip": "Select the end date and time of the duration to retrieve vulnerabilities created before the specified timestamp."
         },
         {
           "title": "Rating Types",
           "name": "rating_types",
-          "description": "Select the one or more types of desired rating based on which you want to retrieve campaign details from Mandiant Advantage Threat Intelligence. You can choose from the following options: Analyst, Predicted, and Unrated.",
+          "description": "Select one or more rating types retrieve details of vulnerabilities from Mandiant Advantage Threat Intelligence. You can choose from the following options: Analyst, Predicted, and Unrated.",
           "type": "multiselect",
           "visible": true,
           "editable": true,
@@ -924,7 +879,7 @@
             "Predicted",
             "Unrated"
           ],
-          "tooltip": "Select the one or more types of desired rating based on which you want to retrieve campaign details from Mandiant Advantage Threat Intelligence. You can choose from the following options: Analyst, Predicted, and Unrated."
+          "tooltip": "Select one or more rating types retrieve details of vulnerabilities from Mandiant Advantage Threat Intelligence. You can choose from the following options: Analyst, Predicted, and Unrated."
         },
         {
           "title": "Risk Ratings",
@@ -942,6 +897,51 @@
             "Unrated"
           ],
           "tooltip": "Select the one or more risk ratings based on which you want to retrieve campaign details from Mandiant Advantage Threat Intelligence. You can choose from the following options: Critical, High, Medium, Low, and Unrated."
+        },
+        {
+          "title": "Sort By",
+          "name": "sort_by",
+          "description": "Specify the name of the field based on which to sort the result retrieved by this operation. It can also be extended to support sorting by appending a : and a sort order (Ascending or Descending).",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify the name of the field based on which to sort the result retrieved by this operation. It can also be extended to support sorting by appending a : and a sort order (Ascending or Descending)."
+        },
+        {
+          "title": "Sort Order",
+          "name": "sort_order",
+          "description": "Select the sorting order of the result. You can choose from following options: Ascending (default) or Descending.",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "options": [
+            "Ascending",
+            "Descending"
+          ],
+          "tooltip": "Select the sorting order of the result. You can choose from following options: Ascending (default) or Descending."
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000.",
+          "type": "integer",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "value": 50,
+          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000."
+        },
+        {
+          "title": "Skip Token",
+          "name": "next",
+          "description": "Skip token is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element includes a skip token parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. NOTE: The token returned is valid for 10 minutes.",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Skip token is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element includes a skip token parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. NOTE: The token returned is valid for 10 minutes."
         }
       ],
       "output_schema": {
@@ -1018,60 +1018,60 @@
       "operation": "get_reports",
       "category": "investigation",
       "annotation": "get_reports",
-      "description": "Retrieves all reports from Mandiant Advantage Threat Intelligence based on the input parameters you have specified.",
+      "description": "Retrieves all reports from Mandiant Advantage Threat Intelligence based on the pagination parameters specified.",
       "title": "Get Reports List",
       "parameters": [
         {
           "title": "Start DateTime",
           "name": "start_epoch",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp.",
+          "description": "Select the start date and time of the duration to retrieve reports created after the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp."
+          "tooltip": "Select the start date and time of the duration to retrieve reports created after the specified timestamp."
         },
         {
           "title": "End DateTime",
           "name": "end_epoch",
-          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp.",
+          "description": "Select the end date and time of the duration to retrieve reports created before the specified timestamp.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp."
+          "tooltip": "Select the end date and time of the duration to retrieve reports created before the specified timestamp."
         },
         {
           "title": "Limit",
           "name": "limit",
-          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 25 and maximum allowed 1000.",
+          "description": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
           "value": 25,
-          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set as 25 and maximum allowed 1000."
+          "tooltip": "Specify the maximum number of results, per page, that this operation should return. By default, this option is set to 25 and maximum allowed is 1000."
         },
         {
           "title": "Offset",
           "name": "offset",
-          "description": "Index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set as 0.",
+          "description": "Specify the index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set to 0.",
           "type": "integer",
           "visible": true,
           "editable": true,
           "required": false,
           "value": 0,
-          "tooltip": "Index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set as 0."
+          "tooltip": "Specify the index of the first item to be returned by this operation. This parameter is useful for pagination and for getting a subset of items. By default, this is set to 0."
         },
         {
           "title": "Skip Token",
           "name": "next",
-          "description": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes.",
+          "description": "Skip token is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element includes a skip token parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes.",
           "type": "text",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes."
+          "tooltip": "Skip token is only used if a previous operation returned a partial result. If a previous response contains a next element, the value of the next element includes a skip token parameter that specifies a starting point to use for subsequent calls. When using next no other parameters should be included in the request. Note: The token returned is valid for 10 minutes."
         }
       ],
       "output_schema": {
@@ -1099,18 +1099,18 @@
       "operation": "get_report_details",
       "category": "investigation",
       "annotation": "get_report_details",
-      "description": "Retrieves a specific report details from Mandiant Advantage Threat Intelligence based on the report ID you have specified.",
+      "description": "Retrieves the details of a specific report from Mandiant Advantage Threat Intelligence based on the report ID specified.",
       "title": "Get Report Details",
       "parameters": [
         {
           "title": "Report ID",
           "name": "id",
-          "description": "Specify the ID of the report based on which you want to retrieve report details from Mandiant Advantage Threat Intelligence.",
+          "description": "Specify the ID of the report to retrieve its details from Mandiant Advantage Threat Intelligence.",
           "type": "text",
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Specify the ID of the report based on which you want to retrieve report details from Mandiant Advantage Threat Intelligence."
+          "tooltip": "Specify the ID of the report to retrieve its details from Mandiant Advantage Threat Intelligence."
         }
       ],
       "output_schema": {
